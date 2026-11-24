@@ -1,0 +1,265 @@
+[[init]]
+iterators=sample;
+sample=1:200;
+
+filename="sp_[[sample]].inp";
+outputDirectory=sp;
+[[/init]]
+TITLE: sp_[[sample]]
+DATA: 
+   FILE = data[[sample]].dat;
+VARIABLE:
+   NAMES = id t1x1-t1x3 t1m1-t1m3 t1y1-t1y3 t1
+            t2x1-t2x3 t2m1-t2m3 t2y1-t2y3 t2
+            t3x1-t3x3 t3m1-t3m3 t3y1-t3y3 t3
+            t4x1-t4x3 t4m1-t4m3 t4y1-t4y3 t4
+            t5x1-t5x3 t5m1-t5m3 t5y1-t5y3 t5
+            t6x1-t6x3 t6m1-t6m3 t6y1-t6y3 t6
+            t7x1-t7x3 t7m1-t7m3 t7y1-t7y3 t7
+            t8x1-t8x3 t8m1-t8m3 t8y1-t8y3 t8
+            t9x1-t9x3 t9m1-t9m3 t9y1-t9y3 t9
+            t10x1-t10x3 t10m1-t10m3 t10y1-t10y3 t10
+	    t11x1-t11x3 t11m1-t11m3 t11y1-t11y3 t11
+            t12x1-t12x3 t12m1-t12m3 t12y1-t12y3 t12
+            t13x1-t13x3 t13m1-t13m3 t13y1-t13y3 t13
+            t14x1-t14x3 t14m1-t14m3 t14y1-t14y3 t14
+            t15x1-t15x3 t15m1-t15m3 t15y1-t15y3 t15
+            t16x1-t16x3 t16m1-t16m3 t16y1-t16y3 t16
+            t17x1-t17x3 t17m1-t17m3 t17y1-t17y3 t17
+            t18x1-t18x3 t18m1-t18m3 t18y1-t18y3 t18
+            t19x1-t19x3 t19m1-t19m3 t19y1-t19y3 t19
+            t20x1-t20x3 t20m1-t20m3 t20y1-t20y3 t20;
+   USEVAR = t1x1-t1x3 t1m1-t1m3 t1y1-t1y3
+            t2x1-t2x3 t2m1-t2m3 t2y1-t2y3
+            t3x1-t3x3 t3m1-t3m3 t3y1-t3y3
+            t4x1-t4x3 t4m1-t4m3 t4y1-t4y3
+            t5x1-t5x3 t5m1-t5m3 t5y1-t5y3
+            t6x1-t6x3 t6m1-t6m3 t6y1-t6y3
+            t7x1-t7x3 t7m1-t7m3 t7y1-t7y3
+            t8x1-t8x3 t8m1-t8m3 t8y1-t8y3
+            t9x1-t9x3 t9m1-t9m3 t9y1-t9y3
+            t10x1-t10x3 t10m1-t10m3 t10y1-t10y3
+	    t11x1-t11x3 t11m1-t11m3 t11y1-t11y3
+            t12x1-t12x3 t12m1-t12m3 t12y1-t12y3
+            t13x1-t13x3 t13m1-t13m3 t13y1-t13y3
+            t14x1-t14x3 t14m1-t14m3 t14y1-t14y3
+            t15x1-t15x3 t15m1-t15m3 t15y1-t15y3
+            t16x1-t16x3 t16m1-t16m3 t16y1-t16y3
+            t17x1-t17x3 t17m1-t17m3 t17y1-t17y3
+            t18x1-t18x3 t18m1-t18m3 t18y1-t18y3
+            t19x1-t19x3 t19m1-t19m3 t19y1-t19y3
+            t20x1-t20x3 t20m1-t20m3 t20y1-t20y3;
+   
+ANALYSIS:
+  ESTIMATOR = BAYES;
+  PROCESSORS = 3;
+  !FBITERATIONS = 10000;
+  ALGORITHM=GIBBS(RW);
+  POINT=MEAN;
+
+MODEL:
+    xt1 by t1x1-t1x3 (lx1-lx3);
+	mt1 by t1m1-t1m3 (lm1-lm3);
+	yt1 by t1y1-t1y3 (ly1-ly3);
+    [t1x1-t1x3@0];
+    [t1m1-t1m3@0];
+    [t1y1-t1y3@0];
+    mt1 on xt1 (at1);
+    yt1 on xt1 (ct1)
+           mt1 (bt1);
+    xt2 by t2x1-t2x3 (lx1-lx3);
+	mt2 by t2m1-t2m3 (lm1-lm3);
+	yt2 by t2y1-t2y3 (ly1-ly3);
+    [t2x1-t2x3@0];
+    [t2m1-t2m3@0];
+    [t2y1-t2y3@0];
+    mt2 on xt2 (at2);
+    yt2 on xt2 (ct2)
+           mt2 (bt2);
+    xt3 by t3x1-t3x3 (lx1-lx3);
+	mt3 by t3m1-t3m3 (lm1-lm3);
+	yt3 by t3y1-t3y3 (ly1-ly3);
+    [t3x1-t3x3@0];
+    [t3m1-t3m3@0];
+    [t3y1-t3y3@0];
+    mt3 on xt3 (at3);
+    yt3 on xt3 (ct3)
+           mt3 (bt3);
+    xt4 by t4x1-t4x3 (lx1-lx3);
+	mt4 by t4m1-t4m3 (lm1-lm3);
+	yt4 by t4y1-t4y3 (ly1-ly3);
+    [t4x1-t4x3@0];
+    [t4m1-t4m3@0];
+    [t4y1-t4y3@0];
+    mt4 on xt4 (at4);
+    yt4 on xt4 (ct4)
+           mt4 (bt4);
+    xt5 by t5x1-t5x3 (lx1-lx3);
+	mt5 by t5m1-t5m3 (lm1-lm3);
+	yt5 by t5y1-t5y3 (ly1-ly3);
+    [t5x1-t5x3@0];
+    [t5m1-t5m3@0];
+    [t5y1-t5y3@0];
+    mt5 on xt5 (at5);
+    yt5 on xt5 (ct5)
+           mt5 (bt5);
+    xt6 by t6x1-t6x3 (lx1-lx3);
+	mt6 by t6m1-t6m3 (lm1-lm3);
+	yt6 by t6y1-t6y3 (ly1-ly3);
+    [t6x1-t6x3@0];
+    [t6m1-t6m3@0];
+    [t6y1-t6y3@0];
+    mt6 on xt6 (at6);
+    yt6 on xt6 (ct6)
+           mt6 (bt6);
+    xt7 by t7x1-t7x3 (lx1-lx3);
+	mt7 by t7m1-t7m3 (lm1-lm3);
+	yt7 by t7y1-t7y3 (ly1-ly3);
+    [t7x1-t7x3@0];
+    [t7m1-t7m3@0];
+    [t7y1-t7y3@0];
+    mt7 on xt7 (at7);
+    yt7 on xt7 (ct7)
+           mt7 (bt7);
+    xt8 by t8x1-t8x3 (lx1-lx3);
+	mt8 by t8m1-t8m3 (lm1-lm3);
+	yt8 by t8y1-t8y3 (ly1-ly3);
+    [t8x1-t8x3@0];
+    [t8m1-t8m3@0];
+    [t8y1-t8y3@0];
+    mt8 on xt8 (at8);
+    yt8 on xt8 (ct8)
+           mt8 (bt8);
+    xt9 by t9x1-t9x3 (lx1-lx3);
+	mt9 by t9m1-t9m3 (lm1-lm3);
+	yt9 by t9y1-t9y3 (ly1-ly3);
+    [t9x1-t9x3@0];
+    [t9m1-t9m3@0];
+    [t9y1-t9y3@0];
+    mt9 on xt9 (at9);
+    yt9 on xt9 (ct9)
+           mt9 (bt9);
+    xt10 by t10x1-t10x3 (lx1-lx3);
+	mt10 by t10m1-t10m3 (lm1-lm3);
+	yt10 by t10y1-t10y3 (ly1-ly3);
+    [t10x1-t10x3@0];
+    [t10m1-t10m3@0];
+    [t10y1-t10y3@0];
+    mt10 on xt10 (at10);
+    yt10 on xt10 (ct10)
+           mt10 (bt10);      
+    xt11 by t11x1-t11x3 (lx1-lx3);
+	mt11 by t11m1-t11m3 (lm1-lm3);
+	yt11 by t11y1-t11y3 (ly1-ly3);
+    [t11x1-t11x3@0];
+    [t11m1-t11m3@0];
+    [t11y1-t11y3@0];
+    mt11 on xt11 (at11);
+    yt11 on xt11 (ct11)
+           mt11 (bt11);
+    xt12 by t12x1-t12x3 (lx1-lx3);
+	mt12 by t12m1-t12m3 (lm1-lm3);
+	yt12 by t12y1-t12y3 (ly1-ly3);
+    [t12x1-t12x3@0];
+    [t12m1-t12m3@0];
+    [t12y1-t12y3@0];
+    mt12 on xt12 (at12);
+    yt12 on xt12 (ct12)
+           mt12 (bt12);
+    xt13 by t13x1-t13x3 (lx1-lx3);
+	mt13 by t13m1-t13m3 (lm1-lm3);
+	yt13 by t13y1-t13y3 (ly1-ly3);
+    [t13x1-t13x3@0];
+    [t13m1-t13m3@0];
+    [t13y1-t13y3@0];
+    mt13 on xt13 (at13);
+    yt13 on xt13 (ct13)
+           mt13 (bt13);
+    xt14 by t14x1-t14x3 (lx1-lx3);
+	mt14 by t14m1-t14m3 (lm1-lm3);
+	yt14 by t14y1-t14y3 (ly1-ly3);
+    [t14x1-t14x3@0];
+    [t14m1-t14m3@0];
+    [t14y1-t14y3@0];
+    mt14 on xt14 (at14);
+    yt14 on xt14 (ct14)
+           mt14 (bt14);
+    xt15 by t15x1-t15x3 (lx1-lx3);
+	mt15 by t15m1-t15m3 (lm1-lm3);
+	yt15 by t15y1-t15y3 (ly1-ly3);
+    [t15x1-t15x3@0];
+    [t15m1-t15m3@0];
+    [t15y1-t15y3@0];
+    mt15 on xt15 (at15);
+    yt15 on xt15 (ct15)
+           mt15 (bt15);
+    xt16 by t16x1-t16x3 (lx1-lx3);
+	mt16 by t16m1-t16m3 (lm1-lm3);
+	yt16 by t16y1-t16y3 (ly1-ly3);
+    [t16x1-t16x3@0];
+    [t16m1-t16m3@0];
+    [t16y1-t16y3@0];
+    mt16 on xt16 (at16);
+    yt16 on xt16 (ct16)
+           mt16 (bt16);
+    xt17 by t17x1-t17x3 (lx1-lx3);
+	mt17 by t17m1-t17m3 (lm1-lm3);
+	yt17 by t17y1-t17y3 (ly1-ly3);
+    [t17x1-t17x3@0];
+    [t17m1-t17m3@0];
+    [t17y1-t17y3@0];
+    mt17 on xt17 (at17);
+    yt17 on xt17 (ct17)
+           mt17 (bt17);
+    xt18 by t18x1-t18x3 (lx1-lx3);
+	mt18 by t18m1-t18m3 (lm1-lm3);
+	yt18 by t18y1-t18y3 (ly1-ly3);
+    [t18x1-t18x3@0];
+    [t18m1-t18m3@0];
+    [t18y1-t18y3@0];
+    mt18 on xt18 (at18);
+    yt18 on xt18 (ct18)
+           mt18 (bt18);
+    xt19 by t19x1-t19x3 (lx1-lx3);
+	mt19 by t19m1-t19m3 (lm1-lm3);
+	yt19 by t19y1-t19y3 (ly1-ly3);
+    [t19x1-t19x3@0];
+    [t19m1-t19m3@0];
+    [t19y1-t19y3@0];
+    mt19 on xt19 (at19);
+    yt19 on xt19 (ct19)
+           mt19 (bt19);
+    xt20 by t20x1-t20x3 (lx1-lx3);
+	mt20 by t20m1-t20m3 (lm1-lm3);
+	yt20 by t20y1-t20y3 (ly1-ly3);
+    [t20x1-t20x3@0];
+    [t20m1-t20m3@0];
+    [t20y1-t20y3@0];
+    mt20 on xt20 (at20);
+    yt20 on xt20 (ct20)
+           mt20 (bt20);  
+MODEL CONSTRAINT:
+	new (indt1 indt2 indt3 indt4 indt5
+    indt6 indt7 indt8 indt9 indt10
+    indt11 indt12 indt13 indt14 indt15
+    indt16 indt17 indt18 indt19 indt20);
+	indt1=at1*bt1;
+    indt2=at2*bt2;
+    indt3=at3*bt3;
+    indt4=at4*bt4;
+    indt5=at5*bt5;
+    indt6=at6*bt6;
+    indt7=at7*bt7;
+    indt8=at8*bt8;
+    indt9=at9*bt9;
+    indt10=at10*bt10;
+    indt11=at11*bt11;
+    indt12=at12*bt12;
+    indt13=at13*bt13;
+    indt14=at14*bt14;
+    indt15=at15*bt15;
+    indt16=at16*bt16;
+    indt17=at17*bt17;
+    indt18=at18*bt18;
+    indt19=at19*bt19;
+    indt20=at20*bt20;
